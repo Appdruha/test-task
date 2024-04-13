@@ -1,6 +1,5 @@
 .container {
     width: 375px;
-    height: 100vh;
+    height: fit-content;
     margin: auto;
-    border: 1px solid black;
 }
