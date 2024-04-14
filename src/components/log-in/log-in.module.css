@@ -1,0 +1,72 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    padding: 274px 62px 0 62px;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+}
+
+.closing {
+    animation: close 400ms;
+}
+
+@keyframes close {
+    100% {
+        opacity: 0;
+    }
+}
+
+.input {
+    margin-top: 20px;
+    padding-left: 20px;
+    width: 251px;
+    height: 55px;
+    background: #FCEFF9 0 0 no-repeat padding-box;
+    box-shadow: 0 0 20px #08070880;
+    border: 2px solid #080708;
+    border-radius: 30px;
+    font-family: 'TestSohne';
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 33px;
+    letter-spacing: 0;
+    color: #080708;
+    opacity: 1;
+}
+
+.submitButton {
+    display: flex;
+    margin: 40px auto;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 169px;
+    height: 55px;
+    background: #00CC99 0 0 no-repeat padding-box;
+    box-shadow: 0 0 20px #08070880;
+    border-radius: 30px;
+    font-family: 'TestSohne';
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 33px;
+    letter-spacing: 0;
+    color: #FFF7FC;
+    border: none;
+}
+
+.closeButton {
+    position: absolute;
+    top: 22px;
+    right: 62px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.closeButton > img {
+    display: block;
+    width: 100%;
+}

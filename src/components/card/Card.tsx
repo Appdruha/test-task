@@ -1,5 +1,6 @@
 import styles from './card.module.css'
 import { useNavigate } from 'react-router-dom'
+import cat from '../../assets/images/cat.png'
 
 export const Card = () => {
   const navigate = useNavigate()
@@ -9,8 +10,8 @@ export const Card = () => {
 
   return (
     <div className={styles.container} onClick={() => handleClick()}>
-      <div className={styles.imgBox}><img src='#' alt='#' /></div>
-      <p>Lego</p>
+      <img src={cat} alt='#' className={styles.imgBox}/>
+      <p className={styles.text}>Lego</p>
     </div>
   )
 }

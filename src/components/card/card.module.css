@@ -15,6 +15,13 @@
 .imgBox {
     width: 280px;
     height: 280px;
-    background: #00CC99;
     border-radius: 20px;
+    display: block;
+}
+
+.text {
+    margin-top: 11px;
+    font: normal normal 900 35px/43px Montserrat;
+    letter-spacing: 0;
+    color: #FCEFF9;
 }

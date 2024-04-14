@@ -1,17 +1,22 @@
-import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { Main } from './pages/Main.tsx'
-import { Upload } from './pages/Upload.tsx'
-import styles from './app.module.css'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { Main } from './pages/main/Main.tsx'
+import { Upload } from './pages/upload/Upload.tsx'
 import { animated, useTransition } from 'react-spring'
 import { useEffect, useRef, useState } from 'react'
+import styles from './app.module.css'
+import { TransitionConfig } from './types/Transition-config.ts'
 
 export const App = () => {
   const location = useLocation()
 
   const containerRef = useRef<null | HTMLElement>(null)
   const containerSizeRef = useRef<{ width: number, height: number }>({ width: 0, height: 0 })
-
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [transitionConfig, setTransitionConfig] = useState<TransitionConfig>({
+    from: { transform: 'translateX(100%)', position: 'absolute' },
+    enter: { transform: 'translateX(0%)', position: 'relative' },
+    leave: { transform: 'translateX(-100%)' },
+  })
 
   useEffect(() => {
     if (containerRef.current) {
@@ -21,14 +26,11 @@ export const App = () => {
     }
   }, [])
 
-  const transitions = useTransition(location, {
-    from: { transform: 'translateX(100%)' },
-    enter: { transform: 'translateX(0%)' },
-    leave: {
-      position: 'absolute',
-      transform: `translateX(-${containerSizeRef.current.width}px)`,
-    },
-  })
+  useEffect(() => {
+    console.log(transitionConfig)
+  }, [transitionConfig])
+
+  const transitions = useTransition(location, transitionConfig)
 
   return (
     <main className={styles.container} ref={containerRef}>
@@ -37,11 +39,11 @@ export const App = () => {
           ...style,
           width: `${containerSizeRef.current.width}px`,
           height: `${containerSizeRef.current.height}px`,
-          zIndex: '5'
         }}>
           <Routes location={item}>
-            <Route index path='/' element={<Main isLoggedIn={isLoggedIn}/>} />
-            <Route path='/upload' element={<Upload />} />
+            <Route index path='/' element={<Main setTransitionConfig={setTransitionConfig} isLoggedIn={isLoggedIn}
+                                                 setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path='/upload' element={<Upload setTransitionConfig={setTransitionConfig} />} />
           </Routes>
         </animated.div>
       ))}
