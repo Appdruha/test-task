@@ -1,6 +1,7 @@
 {
   "name": "test-task",
   "private": true,
+  "homepage": "https://appdruha.github.io/test-task",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
